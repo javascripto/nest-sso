@@ -1,0 +1,12 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll": "never"
+  },
+  "typescript.preferences.preferTypeOnlyAutoImports": false,
+  "editor.formatOnSave": false,
+  "typescript.preferences.organizeImportsIgnoreCase": true,
+  "[typescript]": {
+    "editor.formatOnSave": false
+  }
+}
