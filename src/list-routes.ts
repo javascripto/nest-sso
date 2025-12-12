@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { RequestMethod } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import { IS_PUBLIC_KEY } from './auth/decorators/public.decorator';
 
