@@ -4,137 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - NestJS SSO</title>
+    <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-container {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 24px;
-            border: 4px solid #667eea;
-            background: #667eea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 36px;
-            font-weight: 600;
-        }
-
-        h1 {
-            color: #1a1a2e;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .email {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 32px;
-        }
-
-        .info-grid {
-            display: grid;
-            gap: 16px;
-            text-align: left;
-            margin-bottom: 32px;
-        }
-
-        .info-item {
-            background: #f9fafb;
-            padding: 16px;
-            border-radius: 8px;
-        }
-
-        .info-label {
-            color: #6b7280;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .info-value {
-            color: #1a1a2e;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .logout-btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .logout-btn:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-        }
-    </style>
 </head>
-<body>
-    <div class="profile-container">
+<body class="font-inter bg-gradient-to-br from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-md text-center">
         <% if (user.picture) { %>
-            <img src="<%= user.picture %>" alt="Avatar" class="profile-avatar" style="background: none;">
+            <img src="<%= user.picture %>" alt="Avatar" class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-indigo-500">
         <% } else { %>
-            <div class="profile-avatar">
+            <div class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-indigo-500 bg-indigo-500 flex items-center justify-center text-white text-4xl font-semibold">
                 <%= user.firstName.charAt(0) %><%= user.lastName ? user.lastName.charAt(0) : '' %>
             </div>
         <% } %>
         
-        <h1><%= user.firstName %> <%= user.lastName || '' %></h1>
-        <p class="email"><%= user.email %></p>
+        <h1 class="text-slate-900 text-2xl font-semibold mb-2"><%= user.firstName %> <%= user.lastName || '' %></h1>
+        <p class="text-gray-500 text-sm mb-8"><%= user.email %></p>
         
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Nome</div>
-                <div class="info-value"><%= user.firstName %></div>
+        <div class="grid gap-4 text-left mb-8">
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-gray-500 text-xs uppercase tracking-wide mb-1">Nome</div>
+                <div class="text-slate-900 text-base font-medium"><%= user.firstName %></div>
             </div>
-            <div class="info-item">
-                <div class="info-label">Sobrenome</div>
-                <div class="info-value"><%= user.lastName %></div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-gray-500 text-xs uppercase tracking-wide mb-1">Sobrenome</div>
+                <div class="text-slate-900 text-base font-medium"><%= user.lastName %></div>
             </div>
-            <div class="info-item">
-                <div class="info-label">Email</div>
-                <div class="info-value"><%= user.email %></div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-gray-500 text-xs uppercase tracking-wide mb-1">Email</div>
+                <div class="text-slate-900 text-base font-medium"><%= user.email %></div>
             </div>
         </div>
         
-        <a href="/auth/logout" class="logout-btn">Sair da conta</a>
+        <a href="/auth/logout" class="inline-block py-3.5 px-8 bg-red-500 text-white rounded-lg text-sm font-medium no-underline transition-all duration-200 hover:bg-red-600 hover:-translate-y-0.5">Sair da conta</a>
     </div>
 </body>
 </html>

@@ -4,247 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Realizado - NestJS SSO</title>
+    <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .success-container {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            animation: scaleIn 0.5s ease;
-        }
-
-        @keyframes scaleIn {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-        }
-
-        h1 {
-            color: #1a1a2e;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 32px;
-        }
-
-        .user-card {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-        }
-
-        .user-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            border: 3px solid #667eea;
-        }
-
-        .user-name {
-            color: #1a1a2e;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .user-email {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .token-section {
-            background: #1a1a2e;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 24px;
-            text-align: left;
-        }
-
-        .token-label {
-            color: #9ca3af;
-            font-size: 12px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .token-value {
-            color: #10b981;
-            font-size: 12px;
-            font-family: 'Courier New', monospace;
-            word-break: break-all;
-            line-height: 1.6;
-        }
-
-        .copy-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-bottom: 16px;
-        }
-
-        .copy-btn:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
-        }
-
-        .logout-btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background: transparent;
-            color: #6b7280;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .logout-btn:hover {
-            background: #f9fafb;
-            border-color: #d1d5db;
-        }
-
-        .api-example {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #e5e7eb;
-            text-align: left;
-        }
-
-        .api-example h3 {
-            color: #1a1a2e;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .code-block {
-            background: #1a1a2e;
-            border-radius: 8px;
-            padding: 16px;
-            overflow-x: auto;
-        }
-
-        .code-block code {
-            color: #e5e7eb;
-            font-size: 12px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .code-block .keyword {
-            color: #c792ea;
-        }
-
-        .code-block .string {
-            color: #c3e88d;
-        }
-
-        .copied-toast {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #1a1a2e;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: transform 0.3s ease;
-        }
-
-        .copied-toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-    </style>
 </head>
-<body>
-    <div class="success-container">
-        <div class="success-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<body class="font-inter bg-gradient-to-br from-indigo-500 to-purple-600 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-md text-center">
+        <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
+            <svg class="w-10 h-10 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
             </svg>
         </div>
         
-        <h1>Login Realizado!</h1>
-        <p class="subtitle">Você foi autenticado com sucesso</p>
+        <h1 class="text-slate-900 text-2xl font-semibold mb-2">Login Realizado!</h1>
+        <p class="text-gray-500 text-sm mb-8">Você foi autenticado com sucesso</p>
         
-        <div class="user-card">
+        <div class="bg-gray-50 rounded-xl p-6 mb-6">
             <% if (user && user.picture) { %>
-                <img src="<%= user.picture %>" alt="Avatar" class="user-avatar">
+                <img src="<%= user.picture %>" alt="Avatar" class="w-16 h-16 rounded-full mx-auto mb-4 border-[3px] border-indigo-500">
             <% } else { %>
-                <div class="user-avatar" style="background: #667eea; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 600;">
+                <div class="w-16 h-16 rounded-full mx-auto mb-4 bg-indigo-500 flex items-center justify-center text-white text-2xl font-semibold">
                     <%= user ? user.firstName.charAt(0) : 'U' %>
                 </div>
             <% } %>
-            <div class="user-name"><%= user ? `${user.firstName} ${user.lastName}` : 'Usuário' %></div>
-            <div class="user-email"><%= user ? user.email : '' %></div>
+            <div class="text-slate-900 text-lg font-semibold mb-1"><%= user ? `${user.firstName} ${user.lastName}` : 'Usuário' %></div>
+            <div class="text-gray-500 text-sm"><%= user ? user.email : '' %></div>
         </div>
         
-        <div style="display: flex; gap: 12px; justify-content: center;">
-            <a href="/" class="copy-btn" style="margin-bottom: 0; text-decoration: none;">Ir para Home</a>
-            <a href="/auth/logout" class="logout-btn">Sair</a>
+        <div class="flex gap-3 justify-center">
+            <a href="/" class="inline-flex items-center gap-2 py-3 px-6 bg-indigo-500 text-white rounded-lg text-sm font-medium no-underline transition-all duration-200 hover:bg-indigo-600 hover:-translate-y-0.5">Ir para Home</a>
+            <a href="/auth/logout" class="inline-block py-3 px-6 bg-transparent text-gray-500 border-2 border-gray-200 rounded-lg text-sm font-medium no-underline transition-all duration-200 hover:bg-gray-50 hover:border-gray-300">Sair</a>
         </div>
-        
     </div>
-    
 </body>
 </html>
