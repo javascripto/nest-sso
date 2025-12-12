@@ -2,6 +2,8 @@ const { NestFactory } = require('@nestjs/core');
 const { NestExpressApplication } = require('@nestjs/platform-express');
 const { join } = require('node:path');
 const cookieParser = require('cookie-parser');
+// Force ejs to be included in the bundle
+require('ejs');
 
 let app;
 
